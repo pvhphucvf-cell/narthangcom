@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dòng Truyền Thừa Kadampa Cổ - Bổn Tôn & Thangka</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:wght@300;600;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/narthang-style.css">
+
+    <style>
+        :root {
+            --narthang-gold: #c5a059;
+            --narthang-dark: #0a2417;
+            --narthang-white: #fdf5e6;
+            --glow-gold: rgba(197, 160, 89, 0.3);
+        }
+
+        body { 
+            background: radial-gradient(circle, #1a2e24 0%, #05120c 100%);
+            background-attachment: fixed;
+            color: var(--narthang-white);
+            font-family: 'EB Garamond', serif;
+            overflow-x: hidden;
+        }
+
+        .practice-header {
+            padding: 150px 2rem 5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 12px;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 20px rgba(197, 160, 89, 0.5);
+        }
+
+        .subtitle {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--narthang-gold);
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+        }
+
+        .deity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1300px;
+            margin: 0 auto 5rem;
+            padding: 0 40px;
+        }
+
+        .deity-card {
+            background: rgba(5, 18, 12, 0.6);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        .deity-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--narthang-gold);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 25px var(--glow-gold);
+        }
+
+        .deity-img {
+            width: 100%;
+            height: 450px;
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(20%) brightness(0.9);
+            transition: 0.5s;
+        }
+
+        .deity-card:hover .deity-img {
+            filter: grayscale(0%) brightness(1.1);
+            transform: scale(1.05);
+        }
+
+        .deity-info {
+            padding: 30px;
+            text-align: center;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .deity-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--narthang-gold);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .deity-info p {
+            font-size: 1rem;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .category-divider {
+            text-align: center;
+            margin: 5rem 0 3rem;
+            position: relative;
+        }
+
+        .category-label {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--narthang-gold);
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            background: var(--narthang-dark);
+            padding: 0 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .category-divider::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: rgba(197, 160, 89, 0.2);
+            z-index: 1;
+        }
+
+        footer {
+            background: rgba(0,0,0,0.9);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .tibetan-footer {
+            font-size: 2.2rem;
+            color: #fff;
+            text-shadow: 0 0 20px var(--narthang-gold);
+            margin-bottom: 15px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="hada-nav">
+        <a href="PORTAL.HTML" class="logo">NARTHANG</a>
+        <div class="nav-links">
+            <a href="PORTAL.HTML">Trang Chủ</a>
+            <a href="Practice.html" style="color:var(--narthang-gold)">Bổn Tôn</a>
+            <a href="84 DAI THANH TUU GIA raw.HTML">84 Mahasiddhas</a>
+        </div>
+    </nav>
+
+    <header class="practice-header reveal">
+        <h1 class="section-title">Kadampa Cổ</h1>
+        <div class="subtitle">Kho tàng Bổn tôn & E-Thangka thiêng liêng</div>
+    </header>
+
+    <div class="category-divider">
+        <span class="category-label">Bổn Tôn Truyền Thừa</span>
+    </div>
+
+    <main class="deity-grid">
+        <a href="Avalokitesvara.html" class="deity-card reveal">
+            <div class="deity-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a8/Avalokitesvara_-_Google_Art_Project.jpg');"></div>
+            <div class="deity-info">
+                <h3>Avalokitesvara</h3>
+                <p>Quán Thế Âm Bồ Tát - Hiện thân của lòng từ bi vô lượng.</p>
+            </div>
+        </a>
+
+        <a href="Tara.html" class="deity-card reveal" style="transition-delay: 0.1s;">
+            <div class="deity-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/e9/Green_Tara.jpg');"></div>
+            <div class="deity-info">
+                <h3>Green Tara</h3>
+                <p>Thánh Mẫu Tara Xanh - Người cứu độ nhanh chóng khỏi mọi nỗi sợ.</p>
+            </div>
+        </a>
+
+        <a href="Acala.html" class="deity-card reveal" style="transition-delay: 0.2s;">
+            <div class="deity-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Acala-Vidyaraja.JPG/1200px-Acala-Vidyaraja.JPG');"></div>
+            <div class="deity-info">
+                <h3>Acala</h3>
+                <p>Bất Động Minh Vương - Sự kiên định phá tan mọi chướng ngại.</p>
+            </div>
+        </a>
+
+        <a href="Atisha Dipamkara.html" class="deity-card reveal" style="transition-delay: 0.3s;">
+            <div class="deity-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/e0/Atista-19th_century.jpg');"></div>
+            <div class="deity-info">
+                <h3>Atisha Dipamkara</h3>
+                <p>Bậc Thầy vĩ đại khai sáng dòng Kadampa.</p>
+            </div>
+        </a>
+    </main>
+
+    <div class="category-divider">
+        <span class="category-label">E-Thangka Bảo Vật</span>
+    </div>
+
+    <section class="deity-grid">
+        <div class="deity-card reveal">
+            <div class="deity-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Medicine_Buddha_Bhaisajyaguru.jpg/1200px-Medicine_Buddha_Bhaisajyaguru.jpg');"></div>
+            <div class="deity-info">
+                <h3>Medicine Buddha</h3>
+                <p>Dược Sư Lưu Ly Quang Vương Phật.</p>
+            </div>
+        </div>
+
+        <div class="deity-card reveal" style="transition-delay: 0.1s;">
+            <div class="deity-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/White_Tara.jpg/1200px-White_Tara.jpg');"></div>
+            <div class="deity-info">
+                <h3>White Tara</h3>
+                <p>Bạch Độ Mẫu - Ban tặng sự trường thọ và chữa lành.</p>
+            </div>
+        </div>
+
+        <div class="deity-card reveal" style="transition-delay: 0.2s;">
+            <div class="deity-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Yellow_Jambhala.jpg/1200px-Yellow_Jambhala.jpg');"></div>
+            <div class="deity-info">
+                <h3>Yellow Zambhala</h3>
+                <p>Hoàng Thần Tài - Sự sung túc về tâm linh và vật chất.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <span class="tibetan-footer">ཨོཾ་མ་ཎི་པདྨེ་ཧཱུྃ།</span>
+        <div style="letter-spacing: 4px; font-size: 0.8rem; color: var(--narthang-gold); font-family: 'Montserrat', sans-serif;">
+            © 2026 NARTHANG HERITAGE • KADAMPA LINEAGE
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+
+        window.onload = () => {
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        };
+    </script>
+    <script src="js/mantra-engine.js"></script>
+</body>
+</html>

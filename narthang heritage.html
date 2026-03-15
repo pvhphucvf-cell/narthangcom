@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narthang Heritage - E-Magazine Di Sản Phục Dựng</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:wght@300;600;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/narthang-style.css">
+
+    <style>
+        :root {
+            --narthang-gold: #c5a059;
+            --narthang-dark: #0a2417;
+            --narthang-white: #fdf5e6;
+            --glow-gold: rgba(197, 160, 89, 0.3);
+        }
+
+        body { 
+            background: radial-gradient(circle, #1a2e24 0%, #05120c 100%);
+            background-attachment: fixed;
+            color: var(--narthang-white);
+            font-family: 'EB Garamond', serif;
+            overflow-x: hidden;
+        }
+
+        .magazine-header {
+            padding: 150px 2rem 5rem;
+            text-align: center;
+        }
+
+        .magazine-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 15px;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 25px rgba(197, 160, 89, 0.4);
+        }
+
+        .section-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--narthang-gold);
+            font-size: 1rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
+        .magazine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 50px;
+            max-width: 1400px;
+            margin: 0 auto 5rem;
+            padding: 0 40px;
+        }
+
+        .magazine-card {
+            background: rgba(5, 18, 12, 0.82);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            backdrop-filter: blur(15px);
+            transition: 0.5s;
+            position: relative;
+        }
+
+        .magazine-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--narthang-gold);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.7), 0 0 30px var(--glow-gold);
+        }
+
+        .magazine-cover {
+            height: 600px;
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid var(--narthang-gold);
+            position: relative;
+        }
+
+        .magazine-info {
+            padding: 40px;
+        }
+
+        .magazine-info .issue {
+            color: var(--narthang-gold);
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .magazine-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #fff;
+            line-height: 1.3;
+        }
+
+        .magazine-info p {
+            color: #ccc;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .read-btn {
+            display: inline-block;
+            padding: 12px 35px;
+            border: 1px solid var(--narthang-gold);
+            color: var(--narthang-gold);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            transition: 0.4s;
+            background: transparent;
+        }
+
+        .read-btn:hover {
+            background: var(--narthang-gold);
+            color: #000;
+            box-shadow: 0 0 20px var(--narthang-gold);
+        }
+
+        footer {
+            background: rgba(0,0,0,0.95);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .tibetan-footer {
+            font-size: 2.2rem;
+            color: #fff;
+            text-shadow: 0 0 20px var(--narthang-gold);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: 1.2s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <nav class="hada-nav">
+        <a href="PORTAL.HTML" class="logo">NARTHANG</a>
+        <div class="nav-links">
+            <a href="PORTAL.HTML">Trang Chủ</a>
+            <a href="narthang heritage.html" style="color:var(--narthang-gold)">E-Magazine</a>
+            <a href="84 DAI THANH TUU GIA raw.HTML">84 Mahasiddhas</a>
+        </div>
+    </nav>
+
+    <header class="magazine-header reveal">
+        <h1 class="section-title">Di Sản Truyền Thừa</h1>
+        <div class="section-subtitle">Tạp chí nghệ thuật & Khám phá phục dựng tu viện Narthang</div>
+    </header>
+
+    <main class="magazine-grid">
+        <!-- Số 1 -->
+        <article class="magazine-card reveal">
+            <div class="magazine-cover" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/4b/Tradition_of_Narthang_Monastery.jpg');"></div>
+            <div class="magazine-info">
+                <span class="issue">Số 01 - Xuân 2026</span>
+                <h3>Kiến trúc Narthang: Bình minh trên cao nguyên</h3>
+                <p>Khám phá bản vẽ phục dựng kỹ thuật số các gian thờ chính và thư viện mộc bản cổ xưa của tu viện Narthang.</p>
+                <a href="#" class="read-btn">XEM TẠP CHÍ</a>
+            </div>
+        </article>
+
+        <!-- Số 2 -->
+        <article class="magazine-card reveal" style="transition-delay: 0.2s;">
+            <div class="magazine-cover" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Narthang_Monastery.jpg/1200px-Narthang_Monastery.jpg');"></div>
+            <div class="magazine-info">
+                <span class="issue">Số 02 - Hè 2026</span>
+                <h3>Nghệ thuật Mộc bản & Kangyur</h3>
+                <p>Hành trình tìm về những bản in khắc gỗ quý hiếm, nguồn gốc của các bộ kinh vĩ đại nhất Phật giáo Tây Tạng.</p>
+                <a href="#" class="read-btn">XEM TẠP CHÍ</a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <span class="tibetan-footer">ཨོཾ་མ་ཎི་པདྨེ་ཧཱུྃ།</span>
+        <div style="letter-spacing: 4px; font-size: 0.8rem; color: var(--narthang-gold); font-family: 'Montserrat', sans-serif;">
+            © 2026 NARTHANG HERITAGE • KADAMPA LINEAGE
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+
+        window.onload = () => {
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        };
+    </script>
+    <script src="js/mantra-engine.js"></script>
+</body>
+</html>

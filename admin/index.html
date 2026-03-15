@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narthang Admin - Hệ Thống Quản Trị Nội Dung</title>
+    <link rel="stylesheet" href="../css/narthang-style.css">
+    <style>
+        .admin-body { background: #f4f6f9; min-height: 100vh; }
+        
+        #login-screen {
+            display: flex; justify-content: center; align-items: center; height: 100vh;
+            background: radial-gradient(circle, var(--bg-antique) 0%, #e0dcd0 100%);
+        }
+
+        .login-card {
+            background: white; padding: 3rem; border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1); width: 100%; max-width: 400px;
+            text-align: center; border-top: 8px solid var(--cinnabar-red);
+        }
+
+        #dashboard { display: none; padding-top: 100px; }
+        
+        .dashboard-container {
+            max-width: 1240px; margin: 0 auto; display: grid;
+            grid-template-columns: 280px 1fr; gap: 2rem; padding: 0 2rem;
+        }
+
+        .sidebar { background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); height: fit-content; }
+        
+        .sidebar-item {
+            padding: 1rem 1.5rem; border-radius: 8px; margin-bottom: 0.5rem;
+            cursor: pointer; transition: 0.2s; color: #555; font-weight: 500;
+            display: flex; align-items: center; gap: 10px;
+        }
+
+        .sidebar-item:hover, .sidebar-item.active { background: var(--bg-antique); color: var(--cinnabar-red); }
+
+        .main-panel { background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); min-height: 600px; }
+
+        .admin-section { display: none; }
+        .admin-section.active { display: block; animation: fadeIn 0.5s ease; }
+
+        /* Custom UI for inputs */
+        .input-group { margin-bottom: 1.5rem; }
+        .input-group label { display: block; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 0.5rem; color: #888; font-weight: 600; }
+        .input-group input, .input-group textarea, .input-group select {
+            width: 100%; padding: 0.8rem; border: 1px solid #eee; border-radius: 8px;
+            font-family: var(--font-heading); font-size: 0.95rem; background: #fafafa;
+        }
+        .input-group textarea { min-height: 200px; font-family: var(--font-serif); }
+
+        .admin-btn {
+            padding: 0.8rem 1.5rem; border: none; border-radius: 8px; font-weight: 600;
+            cursor: pointer; transition: 0.3s; font-family: var(--font-heading);
+        }
+        .btn-primary { background: var(--cinnabar-red); color: white; }
+        .btn-secondary { background: var(--saffron-gold); color: white; }
+        .btn-outline { background: transparent; border: 1px solid #ddd; color: #666; }
+
+        /* Library Grid */
+        .library-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
+        .lib-item { border: 1px solid #eee; border-radius: 8px; overflow: hidden; position: relative; }
+        .lib-item img { width: 100%; height: 120px; object-fit: cover; }
+        .lib-actions { padding: 0.5rem; text-align: center; }
+
+        /* Post Manager Table */
+        .post-table { width: 100%; border-collapse: collapse; }
+        .post-table th { text-align: left; padding: 1rem; border-bottom: 2px solid #eee; color: #888; font-size: 0.8rem; }
+        .post-table td { padding: 1rem; border-bottom: 1px solid #f9f9f9; }
+        
+        #code-output {
+            background: #2b2b2b; color: #a9b7c6; padding: 1.5rem; border-radius: 8px;
+            margin-top: 1.5rem; display: none; overflow-x: auto; font-family: monospace;
+            font-size: 0.85rem; position: relative;
+        }
+    </style>
+</head>
+<body class="admin-body">
+
+    <nav class="hada-nav">
+        <a href="../PORTAL.HTML" class="logo">NARTHANG CMS</a>
+        <div class="nav-links">
+            <span id="user-display">Chưa đăng nhập</span>
+            <a href="#" onclick="logout()" id="logout-link" style="display:none">Thoát</a>
+        </div>
+    </nav>
+
+    <!-- Màn hình Đăng nhập -->
+    <section id="login-screen">
+        <div class="login-card fade-in">
+            <h2 style="font-family: var(--font-ritual)">QUẢN TRỊ VIÊN</h2>
+            <div class="input-group" style="text-align: left">
+                <label>Tài khoản</label>
+                <input type="text" id="username" value="admin">
+            </div>
+            <div class="input-group" style="text-align: left">
+                <label>Mật khẩu</label>
+                <input type="password" id="password" value="admin">
+            </div>
+            <button class="admin-btn btn-primary" style="width: 100%" onclick="login()">ĐĂNG NHẬP</button>
+        </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="dashboard">
+        <div class="dashboard-container">
+            <aside class="sidebar">
+                <div class="sidebar-item active" onclick="switchSection('new-post')">📝 Viết Bài Mới</div>
+                <div class="sidebar-item" onclick="switchSection('manage-posts')">📂 Quản Lý Trang</div>
+                <div class="sidebar-item" onclick="switchSection('library')">🖼️ Thư Viện Ảnh</div>
+                <div class="sidebar-item" onclick="switchSection('settings')">⚙️ Cài Đặt</div>
+            </aside>
+
+            <main class="main-panel">
+                
+                <!-- Section: Viết Bài Mới -->
+                <div id="new-post" class="admin-section active">
+                    <h2 style="margin-bottom: 2rem; color: var(--cinnabar-red)">SOẠN THẢO BÀI VIẾT</h2>
+                    <div class="input-group">
+                        <label>Tiêu đề</label>
+                        <input type="text" id="p-title" placeholder="VD: Phật Dược Sư">
+                    </div>
+                    <div class="input-group">
+                        <label>Tiểu đề/Danh hiệu</label>
+                        <input type="text" id="p-subtitle" placeholder="VD: Đấng Y Vương Vô Thượng">
+                    </div>
+                    <div class="input-group">
+                        <label>Ảnh đại diện (URL)</label>
+                        <input type="text" id="p-img" placeholder="https://...">
+                    </div>
+                    <div class="input-group">
+                        <label>Nội dung bài viết</label>
+                        <textarea id="p-content" placeholder="Nhập nội dung..."></textarea>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <button class="admin-btn btn-primary" onclick="processPost()">TẠO MÃ HTML</button>
+                        <button class="admin-btn btn-outline" onclick="copyCode()">SAO CHÉP MÃ</button>
+                    </div>
+                    <pre id="code-output"></pre>
+                </div>
+
+                <!-- Section: Quản Lý Trang -->
+                <div id="manage-posts" class="admin-section">
+                    <h2 style="margin-bottom: 2rem; color: var(--cinnabar-red)">DANH SÁCH TRANG HIỆN TẠI</h2>
+                    <table class="post-table">
+                        <thead>
+                            <tr>
+                                <th>Tên Tệp</th>
+                                <th>Trạng Thái</th>
+                                <th>Thao Tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="post-list-body">
+                            <!-- JS will fill this -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section: Thư Viện Ảnh -->
+                <div id="library" class="admin-section">
+                    <h2 style="margin-bottom: 2rem; color: var(--cinnabar-red)">THƯ VIỆN HÌNH ẢNH</h2>
+                    <div class="input-group">
+                        <label>Thêm ảnh mới (URL)</label>
+                        <div style="display: flex; gap: 0.5rem">
+                            <input type="text" id="lib-url" placeholder="https://...">
+                            <button class="admin-btn btn-primary" onclick="addToLibrary()">THÊM</button>
+                        </div>
+                    </div>
+                    <div class="library-grid" id="lib-grid">
+                        <!-- JS will fill this -->
+                    </div>
+                </div>
+
+                <!-- Section: Cài Đặt -->
+                <div id="settings" class="admin-section">
+                    <h2 style="margin-bottom: 2rem; color: var(--cinnabar-red)">CẤU HÌNH HỆ THỐNG</h2>
+                    <div class="input-group">
+                        <label>Tên Website</label>
+                        <input type="text" id="s-title" value="Narthang Heritage">
+                    </div>
+                    <div class="input-group">
+                        <label>Câu Thần Chú Footer</label>
+                        <input type="text" id="s-mantra" value="OM MANI PADME HUM">
+                    </div>
+                    <div class="input-group">
+                        <label>Chế độ Bảo trì</label>
+                        <select>
+                            <option>Tắt</option>
+                            <option>Bật</option>
+                        </select>
+                    </div>
+                    <button class="admin-btn btn-primary" onclick="alert('Đã lưu cài đặt (Local)');">LƯU THAY ĐỔI</button>
+                </div>
+
+            </main>
+        </div>
+    </section>
+
+    <script>
+        // Quản lý Tabs
+        function switchSection(id) {
+            document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+            
+            document.getElementById(id).classList.add('active');
+            event.currentTarget.classList.add('active');
+            
+            if(id === 'manage-posts') loadPostList();
+            if(id === 'library') loadLibrary();
+        }
+
+        // Login
+        function login() {
+            if(document.getElementById('username').value === 'admin' && document.getElementById('password').value === 'admin') {
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+                document.getElementById('user-display').innerText = 'Admin: Kadampa';
+                document.getElementById('logout-link').style.display = 'inline';
+            } else {
+                alert('Sai thông tin!');
+            }
+        }
+
+        function logout() { location.reload(); }
+
+        // Viết bài
+        function processPost() {
+            const title = document.getElementById('p-title').value;
+            const sub = document.getElementById('p-subtitle').value;
+            const img = document.getElementById('p-img').value;
+            const content = document.getElementById('p-content').value;
+
+            const code = `<!-- BẮT ĐẦU NỘI DUNG -->
+<main class="article-container fade-in">
+    <header class="article-header">
+        <div class="epithet">${sub}</div>
+        <h1>${title}</h1>
+    </header>
+    <div class="thangka-preview" style="background-image: url('${img}')"></div>
+    <article class="article-content">
+        ${content.split('\n').map(p => `<p>${p}</p>`).join('\n        ')}
+    </article>
+</main>
+<!-- KẾT THÚC NỘI DUNG -->`;
+
+            const out = document.getElementById('code-output');
+            out.innerText = code;
+            out.style.display = 'block';
+        }
+
+        function copyCode() {
+            const text = document.getElementById('code-output').innerText;
+            navigator.clipboard.writeText(text).then(() => alert('Đã chép mã! Hãy dán vào file HTML mong muốn.'));
+        }
+
+        // Quản lý trang (Mock)
+        function loadPostList() {
+            const files = [
+                { name: 'PORTAL.HTML', status: 'Trang chủ' },
+                { name: 'Practice.html', status: 'Cổng Bổn tôn' },
+                { name: '84 DAI THANH TUU GIA raw.HTML', status: 'Danh sách' },
+                { name: 'Atisha Dipamkara.html', status: 'Đạo sư' },
+                { name: 'Narthang Tumton.html', status: 'Thánh tổ' },
+                { name: 'narthang heritage.html', status: 'E-Magazine' }
+            ];
+            const body = document.getElementById('post-list-body');
+            body.innerHTML = files.map(f => `
+                <tr>
+                    <td><strong style="color: #000;">${f.name}</strong></td>
+                    <td style="color:green; font-size:0.8rem">${f.status}</td>
+                    <td><button class="admin-btn btn-outline" style="padding:4px 10px; font-size:0.7rem">SỬA</button></td>
+                </tr>
+            `).join('');
+        }
+
+        // Thư viện (Mock)
+        let images = [
+            'https://upload.wikimedia.org/wikipedia/commons/a/a8/Avalokitesvara_-_Google_Art_Project.jpg',
+            'https://upload.wikimedia.org/wikipedia/commons/e/e9/Green_Tara.jpg',
+            'https://upload.wikimedia.org/wikipedia/commons/e/e0/Atista-19th_century.jpg'
+        ];
+
+        function loadLibrary() {
+            const grid = document.getElementById('lib-grid');
+            grid.innerHTML = images.map(url => `
+                <div class="lib-item">
+                    <img src="${url}">
+                    <div class="lib-actions">
+                        <button class="admin-btn btn-outline" style="width:100%; font-size:0.6rem" onclick="navigator.clipboard.writeText('${url}'); alert('Đã chép URL!')">CHÉP URL</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addToLibrary() {
+            const url = document.getElementById('lib-url').value;
+            if(url) {
+                images.unshift(url);
+                loadLibrary();
+                document.getElementById('lib-url').value = '';
+            }
+        }
+    </script>
+</body>
+</html>

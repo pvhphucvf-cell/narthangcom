@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>84 Đại Thành Tựu Giả - Mahasiddhas Full List</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:wght@300;600;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/narthang-style.css">
+
+    <style>
+        :root {
+            --narthang-gold: #c5a059;
+            --narthang-dark: #0a2417;
+            --narthang-white: #fdf5e6;
+            --glow-gold: rgba(197, 160, 89, 0.3);
+        }
+
+        body { 
+            background: radial-gradient(circle, #0e1f16 0%, #05120c 100%);
+            background-attachment: fixed;
+            color: var(--narthang-white);
+            font-family: 'EB Garamond', serif;
+            overflow-x: hidden;
+        }
+
+        body::after { 
+            content:""; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background-image:radial-gradient(rgba(197,160,89,0.05) 1px,transparent 1px); 
+            background-size:50px 50px; z-index:-1; animation:rain 20s linear infinite; pointer-events:none; 
+        }
+        @keyframes rain { from{background-position:0 0} to{background-position:0 1000px} }
+        @keyframes cardAppear { from{opacity:0; transform:translateY(30px)} to{opacity:1; transform:translateY(0)} }
+
+        .nav-sticky { 
+            position:sticky; top:70px; 
+            background: rgba(5, 18, 12, 0.95);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            padding: 1rem; display:flex; justify-content:center; gap:15px; z-index:1000; 
+            backdrop-filter: blur(10px);
+        }
+
+        .flag-btn { 
+            background:rgba(255,255,255,0.05); border:1px solid rgba(197, 160, 89, 0.4); 
+            cursor:pointer; transition:0.3s; border-radius:2px; padding:6px 15px; 
+            display:flex; align-items:center; font-weight:bold; color:white; font-size:0.8rem; 
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .flag-btn.active-btn { 
+            background:var(--narthang-gold); color:#000; 
+            box-shadow:0 0 15px var(--narthang-gold); 
+        }
+
+        .flag-btn img { width:20px; margin-right:8px; }
+
+        .container { max-width:1400px; margin:40px auto; padding:0 40px; min-height: 800px; }
+        
+        h1 { 
+            text-align:center; color:var(--narthang-gold); 
+            font-family: 'Playfair Display', serif; 
+            font-size: 4rem; margin-bottom: 2rem; 
+            text-transform: uppercase; letter-spacing: 12px;
+            text-shadow:0 0 20px rgba(197,160,89,0.4); 
+        }
+
+        .mahasiddha-grid { 
+            display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); 
+            gap:30px; margin-top:30px; 
+        }
+
+        .card { 
+            background: rgba(5, 18, 12, 0.8);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            padding: 35px; position:relative; overflow:hidden; 
+            transition:0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
+            cursor:pointer; display:flex; flex-direction:column; color: inherit; 
+        }
+
+        .card:hover { 
+            transform:translateY(-10px); 
+            box-shadow:0 15px 40px rgba(0,0,0,0.6), 0 0 20px var(--glow-gold); 
+            border-color:var(--narthang-gold); 
+            background: rgba(197, 160, 89, 0.05);
+        }
+
+        .card-num { 
+            color:var(--narthang-gold); font-weight:800; font-size:0.75rem; 
+            text-transform:uppercase; margin-bottom:15px; letter-spacing: 2px;
+            border-bottom:1px solid rgba(197, 160, 89, 0.1); padding-bottom:8px; 
+        }
+
+        .card-name { 
+            font-family: 'Playfair Display', serif; color: #fff; 
+            margin-bottom:15px; font-size:1.8rem; letter-spacing: 1px;
+        }
+
+        .card-bio { font-size:1.05rem; color:#ccc; font-style:italic; line-height:1.7; }
+        
+        .lang-page { display:none; }
+        .lang-page.active-page { display:block; }
+
+        footer { 
+            background:rgba(0,0,0,0.95); border-top:1px solid rgba(197, 160, 89, 0.2); 
+            padding:5rem 2rem; margin-top:5rem; text-align:center; 
+        }
+
+        .tibetan-footer { 
+            font-size: 2.2rem; color: #fff; margin-bottom: 20px; 
+            display: block; text-shadow: 0 0 20px var(--narthang-gold);
+        }
+    </style>
+</head>
+<body>
+    <nav class="hada-nav">
+        <a href="PORTAL.HTML" class="logo">NARTHANG</a>
+        <div class="nav-links">
+            <a href="PORTAL.HTML">Trang Chủ</a>
+            <a href="Practice.html">Bổn Tôn</a>
+            <a href="84 DAI THANH TUU GIA raw.HTML" style="color:var(--narthang-gold)">84 Mahasiddhas</a>
+        </div>
+    </nav>
+
+    <div class="nav-sticky">
+        <button class="flag-btn" id="btn-vi" onclick="setLang('vi')"><img src="https://flagcdn.com/w80/vn.png"> TIẾNG VIỆT</button>
+        <button class="flag-btn" id="btn-en" onclick="setLang('en')"><img src="https://flagcdn.com/w80/us.png"> ENGLISH</button>
+        <button class="flag-btn" id="btn-zh" onclick="setLang('zh')"><img src="https://flagcdn.com/w80/cn.png"> 中文</button>
+        <button class="flag-btn" id="btn-bo" onclick="setLang('bo')"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Flag_of_Tibet.svg/1920px-Flag_of_Tibet.svg.png"> བོད་སྐད།</button>
+    </div>
+
+    <div class="container">
+        <div id="vi" class="lang-page"><h1>84 Đại Thành Tựu Giả</h1><div class="mahasiddha-grid" id="grid-vi"></div></div>
+        <div id="en" class="lang-page"><h1>The 84 Mahasiddhas</h1><div class="mahasiddha-grid" id="grid-en"></div></div>
+        <div id="zh" class="lang-page"><h1>八十四大成就者</h1><div class="mahasiddha-grid" id="grid-zh"></div></div>
+        <div id="bo" class="lang-page"><h1>གྲུབ་ཐོབ་བརྒྱད་ཅུ་རྩ་བཞི།</h1><div class="mahasiddha-grid" id="grid-bo"></div></div>
+    </div>
+
+    <footer>
+        <span class="tibetan-footer">ཨོཾ་མ་ཎི་པདྨེ་ཧཱུྃ།</span>
+        <div style="letter-spacing: 4px; font-size: 0.8rem; color: var(--narthang-gold); font-family: 'Montserrat', sans-serif;">
+            © 2026 NARTHANG HERITAGE • KADAMPA LINEAGE
+        </div>
+    </footer>
+
+    <script>
+        const ordinalsVi = ["Thứ Nhất", "Thứ Nhì", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy", "Thứ Tám", "Thứ Chín", "Thứ Mười", "Thứ Mười Một", "Thứ Mười Hai", "Thứ Mười Ba", "Thứ Mười Bốn", "Thứ Mười Lăm", "Thứ Mười Sáu", "Thứ Mười Bảy", "Thứ Mười Tám", "Thứ Mười Chín", "Thứ Hai Mươi", "Thứ Hai Mươi Mốt", "Thứ Hai Mươi Hai", "Thứ Hai Mươi Ba", "Thứ Hai Mươi Tư", "Thứ Hai Mươi Lăm", "Thứ Hai Mươi Sáu", "Thứ Hai Mươi Bảy", "Thứ Hai Mươi Tám", "Thứ Hai Mươi Chín", "Thứ Ba Mươi", "Thứ Ba Mươi Mốt", "Thứ Ba Mươi Hai", "Thứ Ba Mươi Ba", "Thứ Ba Mươi Tư", "Thứ Ba Mươi Lăm", "Thứ Ba Mươi Sáu", "Thứ Ba Mươi Bảy", "Thứ Ba Mươi Tám", "Thứ Ba Mươi Chín", "Thứ Bốn Mươi", "Thứ Bốn Mươi Mốt", "Thứ Bốn Mươi Hai", "Thứ Bốn Mươi Ba", "Thứ Bốn Mươi Tư", "Thứ Bốn Mươi Lăm", "Thứ Bốn Mươi Sáu", "Thứ Bốn Mươi Bảy", "Thứ Bốn Mươi Tám", "Thứ Bốn Mươi Chín", "Thứ Năm Mươi", "Thứ Năm Mươi Mốt", "Thứ Năm Mươi Hai", "Thứ Năm Mươi Ba", "Thứ Năm Mươi Tư", "Thứ Năm Mươi Lăm", "Thứ Năm Mươi Sáu", "Thứ Năm Mươi Bảy", "Thứ Năm Mươi Tám", "Thứ Năm Mươi Chín", "Thứ Sáu Mươi", "Thứ Sáu Mươi Mốt", "Thứ Sáu Mươi Hai", "Thứ Sáu Mươi Ba", "Thứ Sáu Mươi Tư", "Thứ Sáu Mươi Lăm", "Thứ Sáu Mươi Sáu", "Thứ Sáu Mươi Bảy", "Thứ Sáu Mươi Tám", "Thứ Sáu Mươi Chín", "Thứ Bảy Mươi", "Thứ Bảy Mươi Mốt", "Thứ Bảy Mươi Hai", "Thứ Bảy Mươi Ba", "Thứ Bảy Mươi Tư", "Thứ Bảy Mươi Lăm", "Thứ Bảy Mươi Sáu", "Thứ Bảy Mươi Bảy", "Thứ Bảy Mươi Tám", "Thứ Bảy Mươi Chín", "Thứ Tám Mươi", "Thứ Tám Mươi Mốt", "Thứ Tám Mươi Hai", "Thứ Tám Mươi Ba", "Thứ Tám Mươi Tư"];
+        const data = [
+            {id:1,name:["Luipa","Luipa","魯伊巴","ལུ་ཨི་པ།"],bio:["Kẻ ăn ruột cá, người đạt đại định.","The Fish-Gut Eater.","食魚內臟者。","ཉ་ལྟོ་བ།"]},
+            {id:2,name:["Lilapa","Lilapa","里拉巴","ལི་ལ་པ།"],bio:["Vị vua hưởng lạc biến lạc thú thành đạo.","The Royal Hedonist.","享樂國王。","སྒེག་པ་བ།"]},
+            {id:3,name:["Virupa","Virupa","毗瓦巴","བི་རུ་པ།"],bio:["Chủ tể các Yoga, người ngăn dòng sông Ấn.","Lord of Yogis.","瑜伽士之主。","བི་རུ་པ།"]},
+            {id:4,name:["Dombipa","Dombipa","東比巴","ཌོམྦི་པ།"],bio:["Cưỡi hổ cầm rắn, bậc thầy tánh không.","The Tiger-Rider.","騎虎者。","ཌོམྦི་པ།"]},
+            {id:5,name:["Shavaripa","Shavaripa","夏瓦里巴","ཤ་ཝ་རི་པ།"],bio:["Người thợ săn đạt giải thoát nhờ tâm từ.","The Hunter.","獵人。","ཤ་ཝ་རི་པ།"]},
+            {id:6,name:["Saraha","Saraha","薩拉哈","ས་ར་ཧ།"],bio:["Mũi tên chân lý, cha đẻ các bản đạo ca.","The Arrow-Maker.","製箭者。","ས་ར་ཧ།"]},
+            {id:7,name:["Kankaripa","Kankaripa","康卡里巴","ཀངྐ་རི་པ།"],bio:["Người góa phụ tu hành bên thi hài vợ.","The Widower.","悼念亡妻者。","ཀངྐ་རི་པ།"]},
+            {id:8,name:["Minapa","Minapa","米納巴","མི་ན་པ།"],bio:["Người sống trong bụng cá suốt 12 năm.","The Fisherman.","魚腹生活者。","མི་ན་པ།"]},
+            {id:9,name:["Gorakpa","Gorakpa","葛拉克巴","གོ་རཀྵ་པ།"],bio:["Người chăn bò đạt bất tử.","The Immortal Cowherd.","牧牛者。","གོ་རཀྵ་པ།"]},
+            {id:10,name:["Chaurangipa","Chaurangipa","秋朗吉巴","ཙཽa-རངྒི་པ།"],bio:["Hoàng tử bị chặt chi nhưng hồi sinh nhờ Yoga.","The Dismembered Prince.","肢體重生王子。","ཙཽa-རངྒི་པ།"]},
+            {id:11,name:["Chamaripa","Chamaripa","查馬里巴","ཙa-ma-ri-pa"],bio:["Người đóng giày thần thánh.","The Divine Cobbler.","神聖鞋匠。","ཙa-ma-ri-pa"]},
+            {id:12,name:["Khadgapa","Khadgapa","卡德加巴","ཁa-ཌྒa-པ།"],bio:["Kiếm sĩ của trí tuệ.","The Master of the Sword.","智慧劍客。","ཁa-ཌྒa-པ།"]},
+            {id:13,name:["Nagarjuna","Nagarjuna","龍樹菩薩","ཀླུ་སྒྲུབ་ཞབས།"],bio:["Bậc thầy Trung Quán, lấy kinh từ Long Cung.","Master of Madhyamaka.","中觀大師。","ཀླུ་སྒྲུབ་ཞབས།"]},
+            {id:14,name:["Kanhapa","Kanhapa","卡納巴","ཀཱa-ཎa-པ།"],bio:["Vị thánh bóng đêm đầy quyền năng.","The Dark Lord.","黑行者.","ཀཱa-ཎa-པ།"]},
+            {id:15,name:["Aryadeva","Aryadeva","聖天菩薩","འཕགས་པ་ལྷ།"],bio:["Đệ tử độc nhãn của Ngài Long Thọ.","The One-Eyed disciple.","獨眼弟子.","འཕགས་པ་ལྷ།"]},
+            {id:16,name:["Thaganapa","Thaganapa","塔加納巴","ཐa-ག་ན་པ།"],bio:["Người nói dối chuyển hóa thành chân lý.","The Master of Lies.","說謊者.","ཐa-ག་ན་པ།"]},
+            {id:17,name:["Naropa","Naropa","那洛巴","ནཱa-རོ་པ།"],bio:["Bậc thầy truyền thuyết khổ hạnh.","The Great Scholar.","那洛巴.","ནཱa-རོ་པ།"]},
+            {id:18,name:["Shalipa","Shalipa","夏里巴","ཤa-li-pa"],bio:["Người sói đạt giác ngộ.","The Jackal-Healer.","狼人.","ཤa-li-pa"]},
+            {id:19,name:["Tilopa","Tilopa","帝洛巴","ཏི་ལོ་པ།"],bio:["Người giã vừng, sơ tổ dòng Kagyu.","The Sesame Crusher.","壓榨芝麻者.","ཏི་ལོ་པ།"]},
+            {id:20,name:["Chatrapa","Chatrapa","查查巴","ཙa-tra-pa"],bio:["Người mang sách đạt trí tuệ.","The Book-Carrier.","背書者.","ཙa-tra-pa"]},
+            {id:21,name:["Bhadrapa","Bhadrapa","巴札巴","བྷa-dra-pa"],bio:["Vị Bà-la-môn thanh tịnh.","The Brahmin.","婆羅門。","བྷa-dra-pa"]},
+            {id:22,name:["Dhikipa","Dhikipa","迪吉巴","དྷི་ཀི་པ།"],bio:["Người chăn tằm.","The Silk-Weaver.","養蠶者.","དྷི་ཀི་པ།"]},
+            {id:23,name:["Ajogi","Ajogi","阿若吉","ཨa-dzo-ki-pa"],bio:["Người lười biếng đạt giác ngộ.","The Idle One.","懶惰者.","ཨa-dzo-ki-pa"]},
+            {id:84,name:["Putalipa","Putalipa","普塔里巴","པུ་ཏa-li-pa"],bio:["Đạo sư mang túi pháp cuối.","The Last Bag-Carrier.","最後持袋者.","པུ་ཏa-li-pa"]}
+        ];
+        function fillGrid(lang){
+            const langIdx = ['vi','en','zh','bo'].indexOf(lang);
+            const grid = document.getElementById(`grid-${lang}`);
+            if(!grid) return; grid.innerHTML = ''; 
+            data.forEach((item,index)=>{
+                const card=document.createElement('div'); card.className='card'; card.style.animation=`cardAppear 0.8s ease-out backwards ${index*0.04}s`; 
+                let o; if(lang==='vi') o=`Bậc Thánh ${ordinalsVi[item.id-1]||item.id}`; else if(lang==='bo') o=`གྲུབ་ཐོབ་ #${item.id}`; else o=`Siddha #${item.id}`;
+                card.innerHTML=`<div class="card-num">${o}</div><h3 class="card-name">${item.name[langIdx]||item.name[0]}</h3><div class="card-bio">${item.bio[langIdx]||item.bio[0]}</div>`;
+                grid.appendChild(card);
+            });
+        }
+        function setLang(id){ localStorage.setItem('selectedLanguage',id); document.querySelectorAll('.lang-page').forEach(p=>p.classList.remove('active-page')); const t=document.getElementById(id); if(t){t.classList.add('active-page'); fillGrid(id)} document.querySelectorAll('.flag-btn').forEach(b=>b.classList.remove('active-btn')); const a=document.getElementById('btn-'+id); if(a) a.classList.add('active-btn'); }
+        window.onload=()=>{setLang(localStorage.getItem('selectedLanguage')||'vi')};
+    </script>
+    <script src="js/mantra-engine.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+Trang chủ: 3 đề mục: 
+   
+    1. Đạo sư H.H 17th Kadam Kyabje Dongchen Chotrul Rinpoche: hoá thân thành tựu sự nghiệp của Thánh Tổ Tumton Lodro Drakpga - Nhà sáng lập tu viện Narthang
+        Thánh Tổ Tumton
+        Đại Thành Tựu Giả Long Trí
+    2.Dòng truyền thừa Kadampa Cổ
+        Bổn tôn Dòng truyền thừa: Avalokitesvara, Tara, Acala, Shakyamunie, Atisha
+        E-thangka: thangka các vị Phật: Vô Lượng Thọ, Phật Dược Sư, Tara Trắng, Văn Thù Sư Lợi, Hoàng Thần Tài (Zambhala), Kim Cang Tát Đoả, Tài Bảo Thiên Vương (Vanaye),
+    3. Narthang Heritage
+        E-magazine: tranh tu viện Narthang phục dựng
+    4. 84 Đại Thành Tựu Giả
+A. Mục tiêu & Tầm nhìn
+Giá trị cốt lõi: Truyền tải trí tuệ Kadampa một cách thanh tịnh, tôn nghiêm.
+
+Trải nghiệm người dùng: Tập trung vào sự tĩnh lặng. Người dùng vào web không bị xao nhãng bởi quảng cáo hay hiệu ứng rườm rà
+Typography: Sử dụng font chữ không chân (Sans-serif) cho tiêu đề và có chân (Serif) cho nội dung bài viết để tạo cảm giác như đọc sách truyền thống. Khoảng cách dòng rộng rãi (Line-height: 1.6 - 1.8).
+
+Màu sắc: * Nền: Trắng ngà (#F9F7F2) hoặc màu giấy cổ để bảo vệ mắt.
+
+Chữ: Xám đậm (#333333) thay vì đen thuần để giảm độ chói.
+
+Điểm nhấn: Màu xanh lá cây Kadampa Màu đỏ chu sa hoặc vàng nghệ (đặc trưng Phật giáo).
+
+Header & Footer: Cố định đơn giản. Footer cần có không gian trang trọng cho câu thần chú Bổn tôn. Footer: Old Kadampa Linage - Narthang Gompa
+
+
